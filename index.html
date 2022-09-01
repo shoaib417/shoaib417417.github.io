@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html
+        {
+            scroll-behavior: smooth;
+            overflow-y: scroll;
+        }
+        body
+        {
+            top: 0;
+            margin: 0;
+        }
+        .nav
+        {
+            width: 100%;
+            /* border: 2px solid red;   */
+            box-shadow: 0px 2px 5px 1px rgba(0, 0, 0, 0.753);
+            color: white;
+            display: inline-flex;
+            position: fixed;
+            transition-duration: 1s;
+            z-index: 1;
+        }
+        .portfolio
+        {
+            /* border: 2px solid blue; */
+            width: 20%;
+        }
+        #portfolio
+        {   
+            list-style: none;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        .list
+        {
+            /* border: 2px solid green; */
+            display: inline-block;
+            width: 73%;
+        }
+        .list1
+        {
+            align-items: flex-end;
+        }
+        .list1 li
+        {
+            
+            list-style: none;
+            float: right;
+            font-size: 1.3rem;
+            margin-left: 20px;
+            margin-right: 20px; 
+            padding-top: 8px;
+        }
+        .list1 li a:hover
+        {
+            /* color: rgb(50, 111, 146); */
+            color: rgb(212, 57, 88);
+        }
+        a.active
+        {
+            /* color: rgb(0, 162, 255); */
+            color: yellow;
+            font-weight: bold;
+        }
+        a.sticky.active
+        {
+            /* color: rgb(0, 162, 255); */
+            color: crimson;
+            font-weight: bold;
+
+        }
+        .listhide li
+        {
+            list-style: none;
+            display: none;
+        }
+        .home
+        {
+            width: 100%;
+            height: 100vh;
+            /* border: 2px solid red;   */
+
+        }
+        .backgr
+        {
+            width: 100%;
+            height: 100%;
+            /* border: 2px solid green; */
+            background-image: url("../img/wall1.jpg"); /* The image used */
+            background-color: black; /* Used if the image is unavailable */
+            height: 100vh; /* You must set a specified height */
+            background-position: center; /* Center the image */
+            background-repeat: no-repeat; /* Do not repeat the image */
+            background-size: cover; /* Resize the background image to cover the entire container */ 
+            background-attachment: fixed;
+
+
+        }
+        .line1
+        {
+            width: fit-content;
+            /* border: 2px solid red; */
+            position: relative;
+            top: 25%;
+            left: 13%;
+            display: block;
+            font-size: 2rem;
+            color: white;
+
+        }
+        .line2
+        {
+            width: 80%;
+            /* border: 2px solid red; */
+            position: relative;
+            top: 25%;
+            left: 13%;
+            display: inline-block;
+            font-weight: bold;
+            font-size: 4rem;
+            color: white;
+
+        }
+        .line3
+        {
+            width: 80%;
+            /* border: 2px solid red; */
+            position: relative;
+            top: 25%;
+            left: 13%;
+            display: inline-block;
+            font-size: 3rem;
+            color: white;
+
+        }
+        .homedetails
+        {
+            width: 60%;
+            /* border: 2px solid green;  */
+            position: relative;
+            top: 18%;
+            margin-left: 5%;
+            height: 300px;
+        }
+        #prin
+        {
+            /* border: 2px solid black;  */
+            margin-right: 0px;
+            padding-right: 0px;
+            color: yellow;
+            position: relative;
+            left: 10px;
+            font-weight: bold;
+
+        }
+        .spa
+        {
+            color: yellow;
+        }
+        navi.sticky 
+        { 
+            background-color: rgba(255, 217, 0, 0.849); 
+            color: black;
+        }
+        navi.sticky .spa
+        {
+            color: white;
+        }
+        .about
+        {
+            /* border: 2px solid red; */
+            width: 100%;
+            height: 100vh;
+        }
+        .aboutheading
+        {
+            width: fit-content;
+            /* border: 2px solid red; */
+            position: relative;
+            top: 17%;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 3em;
+            font-weight: bold;
+        }
+        .underline
+        {
+            border-top: 4px solid black;
+            position: relative;
+            top: 19.2%;
+            width: 200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .con
+        {
+            width: fit-content;
+            /* border: 2px solid red; */
+            position: relative;
+            /* margin-left: auto;
+            margin-right: auto; */
+            margin: auto;
+            bottom: 22.5px;
+            background-color: white;
+            font-size: 1.5rem;
+            padding: 4px;
+            color: red;
+
+        }
+        .dp
+        {
+            /* border: 2px solid green; */
+            width: 301px;
+            height: 375px;   
+            position: relative;
+            background-image: url(../img/pic1.jpg);
+            background-position: center; /* Center the image */
+            background-repeat: no-repeat; /* Do not repeat the image */
+            background-size: cover; /* Resize the background image to cover the entire container */ 
+            border-radius: 6px;
+            margin: auto;
+            box-shadow: 0px 2px 5px 5px rgba(255, 220, 25, 0.753);
+            margin-top: 15px;
+            margin-right: 30px;
+        }
+        .abouttext
+        {
+            /* border: 2px solid green; */
+            width: 600px;
+            height: 320px;  
+            position: relative;
+            top: 25%;
+            margin: auto;
+            border-radius: 6px;
+            background: rgba(0, 0, 0, 0.829);
+            color: white;
+            box-shadow: 0px 2px 5px 5px rgba(255, 220, 25, 0.753);
+            padding: 20px;
+            margin-top: 23px;   
+        }
+        .aboutcon
+        {
+            width:initial;
+            margin: auto;
+            /* border: 2px solid blue; */
+            position: relative;
+            top: 23%;
+            display: flex;
+            padding: 5px;
+            padding-left: 50px;
+            padding-right: 50px;
+        }
+        .textdetails
+        {
+            line-height: 25px;
+        }
+        .servicescon
+        {
+            width: initial; 
+            /* border: 2px solid white; */
+            display: flex;
+            position: relative;
+            top: 23%;
+            padding: 15px;
+        }
+        .box
+        {
+            /* border: 2px solid red; */
+            width: 350px;
+            display: inline-block;
+            margin: 10px;
+            margin-left: 20px;
+            margin-right: 20px;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            line-height: 25px;
+            background: rgb(73, 73, 73);
+            border-radius: 6px;
+            transform: scale(1);
+            transition: 0.3s ease-in-out;
+        }
+        .box:hover
+        {
+            cursor: pointer;
+            background: rgba(255, 217, 0, 0.801);
+            color: black;
+            transform: scale(1.05);
+        }
+        #box1
+        {
+            margin-left: auto;
+        }
+        #box3
+        {
+            margin-right: auto;
+        }
+        .button 
+        {
+            background-color: red;
+            border: none;
+            color: white;
+            padding: 16px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            top: 140px;
+            left: 13%;
+            font-size: 1.5rem;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+            border-radius: 6px;
+            margin-right: 100px;
+        }
+        .button1 
+        {
+            background-color: rgba(255, 217, 0, 0.849); 
+            color: black; 
+            /* border: 2px solid #4CAF50; */
+        }
+        .button1:hover 
+        {
+            background-color: rgb(255, 0, 0);
+            color: white;
+        }
+        .aboutskills
+        {
+            /* border: 2px solid black; */
+            position: relative;
+            top: 23%;
+            padding: 20px;
+            display: flex;
+        }
+        .skills
+        {
+            line-height: 25px;
+            width: 500px;
+            border-radius: 6px;
+            background: rgba(0, 0, 0, 0.829);
+            color: white;
+            box-shadow: 0px 2px 5px 5px rgba(255, 220, 25, 0.753);
+            padding: 20px;
+            margin: auto;
+        }
+        .progressbar
+        {
+            border: 10px solid white;
+            width: 50%;
+            margin: auto;   
+
+
+        }
+        .java
+        {
+            /* border: 2px solid red;  */
+            height: 6px;
+            width: 100%;   
+            background: rgb(221, 221, 221);
+        }
+        .skillstext
+        {
+            /* border: 2px solid black; */
+            width: 100%;
+            font-size: 1.2rem;
+        }
+        .skilldes
+        {
+            width: fit-content;
+            display: inline-block;
+        }
+        .progress
+        {
+            height: 6px;
+            width: 90%;
+            background: red;
+        }
+        #progress1
+        {
+            width: 90%;
+        }
+        #progress2
+        {
+            width: 90%;
+        }
+        #progress3
+        {
+            width: 80%;
+        }
+        #progress4
+        {
+            width: 50%;
+        }
+        #progress5
+        {
+            width: 80%;
+        }
+        .gallogo
+        {
+            width: 125px;
+            height: 125px;
+            border-radius: 50%;
+            border:5px solid red;
+        }
+        .contact1
+        {
+            /* border: 2px solid black; */
+            position: relative;
+            top: 180px;
+            width: 49.2%;
+            display: inline-block;
+
+        }
+        .contact2
+        {
+            /* border: 2px solid black;  */
+            position: relative;
+            top: 180px;
+            width: 49.2%;
+            display: inline-block;
+        }
+        .name
+        {
+            border: 2px solid black;
+            width: 50%;
+            margin: auto;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.829);
+            color: white;
+            transform: scale(1);
+            transition: 0.3s ease-in-out;
+            cursor: pointer;
+        }
+        .name:hover
+        {
+            background: rgba(238, 202, 0, 0.801);
+            color: black;
+            transform: scale(1.03);
+        }
+        .titl
+        {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+            margin-top: 10px;
+            
+        }
+        .detal
+        {
+            font-size: 1.05rem;
+            font-weight: bold;
+        }
+        .end
+        {
+            background: black;
+            border: 2px solid black; 
+            font-size: 1.1rem;
+            color: white;
+            padding-left: 25px;
+        }
+        a
+        {
+            text-decoration: none;
+            color: white;
+        }
+        a.sticky
+        {
+            color: black;
+        }
+        .butto
+        {
+            position: fixed;
+            right: 0.5%;
+            bottom: 0.5%;
+        }
+        .overlay {
+            /* Height & width depends on how you want to reveal the overlay (see JS below) */   
+            height: 100%;
+            width: 0;
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            background-color: rgb(0,0,0); /* Black fallback color */
+            background-color: rgba(0,0,0, 0.9); /* Black w/opacity */
+            overflow-x: hidden; /* Disable horizontal scroll */
+            transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+        }
+
+        /* Position the content inside the overlay */
+        .overlay-content {
+            position: relative;
+            top: 25%; /* 25% from the top */
+            width: 100%; /* 100% width */
+            text-align: center; /* Centered text/links */
+            margin-top: 30px; /* 30px top margin to avoid conflict with the close button on smaller screens */
+        }
+
+        /* The navigation links inside the overlay */
+        .overlay a {
+            padding: 8px;
+            text-decoration: none;
+            font-size: 36px;
+            color: #818181;
+            display: block; /* Display block instead of inline */
+            transition: 0.3s; /* Transition effects on hover (color) */
+        }
+
+        /* When you mouse over the navigation links, change their color */
+        .overlay a:hover, .overlay a:focus {
+            color: #f1f1f1;
+        }
+
+        /* Position the close button (top right corner) */
+        .overlay .closebtn {
+            position: absolute;
+            top: 20px;
+            right: 45px;
+            font-size: 60px;
+        }
+        #conser
+        {
+            margin-left: 37px;
+        }
+
+        /* When the height of the screen is less than 450 pixels, change the font-size of the links and position the close button again, so they don't overlap */
+        @media screen and (max-height: 450px) {
+            .overlay a 
+            {
+                font-size: 20px;
+            }
+            .overlay .closebtn 
+            {
+                font-size: 40px;
+                top: 15px;
+                right: 35px;
+            }
+        }
+
+        
+        @media screen and (min-width: 768px) and (max-width: 1023px)
+        {
+            .list1 li
+            {
+                margin-left: 9px;
+                margin-right: 9px;
+            }
+            .contact1
+            {
+                top: 250px;
+            }
+            .contact2
+            {
+                top: 250px;
+            }
+            
+        }
+        
+        @media screen and (min-width: 0px) and (max-width: 899px)
+        {
+            .list1  
+            {
+                display: none;
+            }
+            .listhide li
+            {
+                display: flex;
+            }
+            .listhide
+            {
+                float: right;
+                padding-top: 6px;
+                margin-right: 20px;
+                font-size: 1.2rem;
+            }
+            .home
+            {
+                width: 100%;
+            }
+            .line2
+            {
+                font-size: 3rem;    
+            }
+            .line3
+            {
+                font-size: 2rem;  
+            }
+            .aboutcon
+            {
+                display: block;
+                padding-left: 0px;
+                padding-right: 0px;
+            }
+            .about
+            {
+                height: 1200px;
+            }
+            .abouttext
+            {
+                width: 80%;
+                height: fit-content;
+            }
+            .dp
+            {
+                margin: auto;
+            }
+            .servicescon
+            {
+                display: block;
+            }
+            .box
+            {
+                width: 97%;
+            }
+            #box1
+            {
+                margin: auto;
+                margin-bottom: 20px;
+            }
+            #box2
+            {
+                margin: auto;
+                margin-bottom: 20px;
+            }
+            #box3
+            {
+                margin: auto;
+                margin-bottom: 20px;
+            }
+            .skills
+            {
+                width: 90%;
+                margin: auto;
+            }
+            .aboutskills
+            {
+                display: block;
+                
+            }
+            .progressbar
+            {
+                width: 95%;
+                position: relative;
+                top: 50px;
+
+            }
+            #quali
+            {
+                height: 1800px;
+            }
+            #cont
+            {
+                height: 1400px;
+            }
+            .contact1
+            {
+                width: 100%;
+                top: 250px;
+            }
+            .contact2
+            {
+                width: 100%;
+                top: 250px;
+            }
+            #ser
+            {
+                height: 1300px;
+            }
+            #und
+            {
+                top: 18%;
+            }
+            #conser
+            {
+                margin: auto;
+            }
+            #hom
+            {
+                height: 1100px;
+            }
+            .backgr
+            {
+                height: 1100px;
+            }
+            
+        }
+        /* @media screen and (min-height:0px;) and (max-height: 690px;) {
+            .home
+            {
+                border: 2px solid blue;
+            }
+        } */
+    </style>
+</head>
+<body>
+    <div>
+        <section class=home id="hom">
+            <div class="backgr">
+                <navi class="nav" id="navbar">
+                    <div class="portfolio">
+                        <ul>
+                            <li id="portfolio">Portfo<span class="spa">lio.</span></li>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <ul class=list1>
+                            <li><a href="#cont" class="cont" id="colo1">Contact</a></li>
+                            <li><a href="#quali" class="quali" id="colo2">Qualification</a></li>
+                            <li><a href="#ski" class="ski" id="colo3">Skills</a></li>
+                            <li><a href="#ser" class="ser" id="colo4">Services</a></li>
+                            <li><a href="#abo" class="abo" id="colo5">About</a></li>
+                            <li><a href="#hom" class="hom active" id="colo6">Home</a></li>
+                        </ul>
+                        <ul class="listhide">
+                            <li onclick="openNav()">More</li>
+                        </ul>
+                    </div>
+                </navi>
+                <div class="homedetails">
+                    <div class="line1">
+                        Hello, My name is
+                    </div>
+                    <div class="line2">
+                        Mohammad <span style="color: yellow">Shoaib</span>
+                    </div>
+                    <div class="line3">
+                        And i'm
+                        <span id="prin"></span>
+                        <span style="margin-left: 0px; padding-left: 0px; color: yellow; border-left: 0px;" id="movingcurser">|</span>         
+                    </div>
+                    <div>
+                        <button class="button button1"><a href="#cont" id="colo1" style="color: black;">Hire me!</a></button>
+                        <button class="button button1" style="display: inline-block;" onclick="resumeopen()">View resume</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="about" id="abo">
+            <div class="aboutheading">
+                About me
+            </div>
+            <div class="underline">
+                <div class="con">who i am</div>
+            </div>
+            <div class=aboutcon>
+            <div class="dp"></div>
+            <div class="abouttext"><h2>I'm Shoaib and i'm <span style="color: yellow;" id="prinn"></span><span style="margin-left: 0px; padding-left: 0px; color: yellow; border-left: 0px;" id="aboutmovingcurser">|</span></h2>
+                <div class="textdetails">I am currently pursuing a Bachelor's degree(focusing in Computer Science and Engineering) at Galgotias College of Engineering and Technology.I am in final year of my UG program.I am an enthusiastic learner, a disciplined and dedicated individual who always strives for improvement. I'm responsible, confident, resolute, driven, and highly ambitious. Having a knack for leadership.</div>
+            </div>
+            </div>
+        </section>
+        <section style="background: black;" class="about" id="ser">
+            <div style="color: white;" class="aboutheading">
+                My Services
+            </div>
+            <div style="border-top: 4px solid white; width: 220px;" class="underline">
+                <div style="background: black;" class="con" id=conser>what i provide</div>
+            </div>
+            <div class=servicescon>
+                <div class="box" id="box1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-brush-fill" viewBox="0 0 16 16"     >
+                        <path d="M15.825.12a.5.5 0 0 1 .132.584c-1.53 3.43-4.743 8.17-7.095 10.64a6.067 6.067 0 0 1-2.373 1.534c-.018.227-.06.538-.16.868-.201.659-.667 1.479-1.708 1.74a8.118 8.118 0 0 1-3.078.132 3.659 3.659 0 0 1-.562-.135 1.382 1.382 0 0 1-.466-.247.714.714 0 0 1-.204-.288.622.622 0 0 1 .004-.443c.095-.245.316-.38.461-.452.394-.197.625-.453.867-.826.095-.144.184-.297.287-.472l.117-.198c.151-.255.326-.54.546-.848.528-.739 1.201-.925 1.746-.896.126.007.243.025.348.048.062-.172.142-.38.238-.608.261-.619.658-1.419 1.187-2.069 2.176-2.67 6.18-6.206 9.117-8.104a.5.5 0 0 1 .596.04z"/>
+                    </svg>
+                    <h1 style="font-weight: bold;">Web Designing</h1>
+                    <p>HTML, CSS, JavaScript, soft skills, time management, problem solving, and attention to detail are some of the skills that help me make a site look good.</p>
+                </div>
+                <div class="box" id="box2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-filetype-java" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M14 4.5V11h-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5L14 4.5ZM1.521 15.175a1.321 1.321 0 0 1-.082-.466h.765a.577.577 0 0 0 .073.27.499.499 0 0 0 .454.246c.19 0 .33-.055.422-.164.092-.11.138-.265.138-.466V11.85h.79v2.725c0 .44-.118.774-.357 1.005-.236.23-.564.345-.984.345a1.59 1.59 0 0 1-.568-.094 1.144 1.144 0 0 1-.408-.266 1.139 1.139 0 0 1-.243-.39Zm3.972-.354-.314 1.028h-.8l1.342-3.999h.926l1.336 3.999h-.84l-.314-1.028H5.493Zm1.178-.59-.49-1.616h-.035l-.49 1.617h1.015Zm2.342 1.618h.952l1.327-3.999h-.878l-.888 3.138h-.038L8.59 11.85h-.917l1.34 3.999Zm3.087-1.028-.314 1.028h-.8l1.342-3.999h.926l1.336 3.999h-.84l-.314-1.028H12.1Zm1.178-.59-.49-1.616h-.035l-.49 1.617h1.015Z"/>
+                    </svg>
+                    <h1 style="font-weight: bold;">Software Development</h1>
+                    <p>A Java Developer is a specialized programmer who work on business applications, software, and websites along with software engineers and web developers.</p>
+
+                </div>
+                <div class="box" id="box3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-boombox-fill" viewBox="0 0 16 16">
+                        <path d="M14 0a.5.5 0 0 1 .5.5V2h.5a1 1 0 0 1 1 1v2H0V3a1 1 0 0 1 1-1h12.5V.5A.5.5 0 0 1 14 0ZM2 3.5a.5.5 0 1 0 1 0 .5.5 0 0 0-1 0Zm2 0a.5.5 0 1 0 1 0 .5.5 0 0 0-1 0Zm7.5.5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1Zm1.5-.5a.5.5 0 1 0 1 0 .5.5 0 0 0-1 0ZM9.5 3h-3a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1ZM6 10.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm-1.5.5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1Zm7 1a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Zm.5-1.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0Z"/>
+                        <path d="M0 6h16v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V6Zm2 4.5a2.5 2.5 0 1 0 5 0 2.5 2.5 0 0 0-5 0Zm7 0a2.5 2.5 0 1 0 5 0 2.5 2.5 0 0 0-5 0Z"/>
+                    </svg>
+                    <h1 style="font-weight: bold;">Music Production</h1>
+                    <p>Define the vibe, Create a bass line, Add in the drums, Add melodic elements, Fill in the gaps, Expand the beat and Mix and master the beat thats it for making a catchy music.</p>
+                </div>
+            </div>
+        </section>
+        <section class="about" id="ski">
+            <div class="aboutheading">
+                My skills
+            </div>
+            <div style="width: 170px;" class="underline">
+                <div class="con">what i know</div>
+            </div>
+            <div class=aboutskills>
+            <div class="skills"><h2 style="color: yellow;">My Skills, Achievements and Certifications</h2>
+            Mentioned below are some of my certifications:<br>
+            1. Java(Basic) Certification from HackerRank.<br>
+            2. Gold level (5 star) in Java programming language.<br>
+            3. Silver level (4 star) in Problem Solving.<br>
+            4.Silver medalist in Diploma Computer Science and Engineering batch.<br>
+            <button style="position: relative; top: 5px; left: 0px; margin-right: 0%; margin-top: 20px;" class="button button1" onclick="certificationsopen()">Certifications</button>
+            </div>
+            <div class="progressbar">
+                <div class="skillstext"><div class="skilldes" style="position: relative; left: 0%;">Java</div><div class="skilldes" style="position: relative; float: right ;">90%</div></div>
+                <div class="java"><div class="progress" id="progress1"></div></div>
+                <br>
+                <div class="skillstext"><div class="skilldes" style="position: relative; left: 0%;">HTML</div><div class="skilldes" style="position: relative; float: right ;">90%</div></div>
+                <div class="java"><div class="progress" id="progress2"></div></div>
+                <br>
+                <div class="skillstext"><div class="skilldes" style="position: relative; left: 0%;">CSS</div><div class="skilldes" style="position: relative; float: right ;">80%</div></div>
+                <div class="java"><div class="progress" id="progress3"></div></div>
+                <br>
+                <div class="skillstext"><div class="skilldes" style="position: relative; left: 0%;">JavaScript</div><div class="skilldes" style="position: relative; float: right ;">50%</div></div>
+                <div class="java"><div class="progress" id="progress4"></div></div>
+                <br>
+                <div class="skillstext"><div class="skilldes" style="position: relative; left: 0%;">MySQL</div><div class="skilldes" style="position: relative; float: right ;">80%</div></div>
+                <div class="java"><div class="progress" id="progress5"></div></div>
+                <br>
+            </div>
+            
+            </div>
+        </section>
+        <section style="background: black;" class="about" id="quali">
+            <div style="color: white; text-align: center;" class="aboutheading" >
+                My Qualifications
+            </div>
+            <div style="border-top: 4px solid white; width: 220px;" class="underline" id="und">
+                <div style="background: black;margin-left: 58px;" class="con">education</div>
+            </div>
+            <div class=servicescon>
+                <div class="box" id="box1" style="font-size: 0.9rem;">
+                    <img src="../img/gal.jpg" alt="" class="gallogo">
+                    <h2>B.Tech</h2>
+                    <p>
+                        Branch: Computer Science Engineering<br>
+                        Member at LOOP:Galgotias Coder's Hub(2021-till date)<br>
+                        Director-International Services:RC GEI 2021-22<br>
+                        Affilated to APJ Abdul Kalam Technical University(AKTU)
+                        under all India Council for Technical Education(AICTE).
+                    </p>
+                </div>
+                <div class="box" id="box2" style="font-size: 0.9rem;">
+                    <img src="../img/gal.jpg" alt="" class="gallogo">
+                    <h2>Diploma</h2>
+                    <p>
+                        Branch: Computer Science Engineering<br>
+                        Recognized by the University Grants Commission (UGC)
+                        under all India Council for Technical Education(AICTE).
+                        Silver medalist in Diploma Computer Science and Engineering batch.
+                    </p>
+                </div>
+                <div class="box" id="box3" style="font-size: 0.9rem;">
+                    <img src="../img/vseclogo.jpg" alt="" class="gallogo">
+                    <h2>Intermediate</h2>
+                    <p>
+                        Senior Secondary Schooling<br>
+                        Affilated to Central Board of Secndary Education.<br>
+                        Subjects: Mathematics, Physics, Chemistry, English, Computer Science.
+                    </p>
+                </div>
+            </div>
+        </section>
+        <section class="about" id="cont">
+            <div class="aboutheading">
+                Contact me
+            </div>
+            <div style="width: 170px;" class="underline" id=und>
+                <div class="con">get in touch</div>
+            </div>
+            <div class="contact1">
+                <div class="name">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                    </svg>
+                    <div class="titl">Name</div>
+                    <div class="detal">Mohammad Shoaib</div>
+                </div>
+                <div class="name">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+                        <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+                    </svg>
+                    <div class="titl">Address</div>
+                    <div class="detal">Sahkar Nagar, Maswanpur, Kanpur, Uttar Pradesh. </div>
+                </div>
+                <div class="name">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
+                        <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
+                    </svg>
+                    <div class="titl">Email</div>
+                    <div class="detal">shoaib417417@gmail.com</div>
+                </div>
+            </div>
+            <div class="contact2">
+                <div class="name">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-telephone-fill" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
+                    </svg>
+                    <div class="titl">Call me on</div>
+                    <div class="detal">+91 8429010198</div>
+                </div>
+                <div class="name">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
+                        <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/>
+                    </svg>
+                    <div class="titl">Instagram</div>
+                    <div class="detal">@shoaib_13 </div>
+                </div>
+                <div class="name">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                    </svg>
+                    <div class="titl">GitHub</div>
+                    <div class="detal">shoaib417</div>
+                </div>
+            </div>
+        </section>
+        <div class="end">
+            <p>Send me an email, you'll get response within 24 hours.</p>
+        </div>
+        <div class="butto">
+            <a href="#hom">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-arrow-up-square-fill" viewBox="0 0 16 16" style="color: rgba(230, 195, 1, 0.849);">
+                <path d="M2 16a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2zm6.5-4.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 1 0z"/>
+            </svg>
+            </a>
+        </div>
+        <div id="myNav" class="overlay">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <div class="overlay-content">
+                <a href="#hom" onclick="closeNav()">Home</a>
+                <a href="#abo" onclick="closeNav()">About</a>
+                <a href="#ser" onclick="closeNav()">Services</a>
+                <a href="#ski" onclick="closeNav()">Skills</a>
+                <a href="#quali" onclick="closeNav()">Qualification</a>
+                <a href="#cont" onclick="closeNav()">Contact</a>
+            </div> 
+        </div>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
